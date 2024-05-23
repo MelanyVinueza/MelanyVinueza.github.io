@@ -4,11 +4,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Registro</title>
-    <link rel="stylesheet" href="css/style2.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #F0F0F0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            background-color: #FFFFFF;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        .paso {
+            display: none;
+        }
+        .paso.active {
+            display: block;
+        }
+        label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 1rem;
+            color: #333333;
+        }
+        input[type="text"], input[type="number"], select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 10px 0;
+            border: 1px solid #CCCCCC;
+            border-radius: 4px;
+        }
+        input[type="checkbox"] {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #333333;
+            border-radius: 4px;
+            margin-right: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        input[type="checkbox"]:checked {
+            background-color: #333333;
+            border-color: #333333;
+        }
+        input[type="checkbox"]:checked::after {
+            content: '\2713';
+            font-size: 16px;
+            color: #FFFFFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        button {
+            padding: 15px 32px;
+            background-color: #333333;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:disabled {
+            background-color: #CCCCCC;
+            cursor: not-allowed;
+        }
+        button:hover:enabled {
+            background-color: #000000;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        
         <div class="paso active" id="paso1">
             <h2>Dirección de Envío</h2>
             <form id="form1">
@@ -36,7 +110,7 @@
             </form>
         </div>
 
-        <div class="paso" id="paso2" style="display: none;">
+        <div class="paso" id="paso2">
             <h2>Información Confidencial</h2>
             <form id="form2">
                 <label for="codigoPostal">Código Postal:</label>
@@ -61,30 +135,22 @@
             const entregaTercero = document.getElementById('entregaTercero');
             const enviarDatos = document.getElementById('enviarDatos');
             const regresarPaso1 = document.getElementById('regresarPaso1');
-            const linkFormularioRegistro = document.getElementById('linkFormularioRegistro');
 
             function actualizarEstadoEnviarDatos() {
                 enviarDatos.disabled = !entregaPropietario.checked;
             }
 
             function mostrarPaso2() {
-                paso1.classList.add('active');
-                paso2.style.display = 'block';
+                paso1.classList.remove('active');
+                paso2.classList.add('active');
             }
 
             function mostrarPaso1() {
-                paso2.style.display = 'none';
+                paso2.classList.remove('active');
+                paso1.classList.add('active');
             }
 
-            linkFormularioRegistro.addEventListener('click', function (e) {
-                e.preventDefault();
-                paso1.classList.add('active');
-                paso2.style.display = 'none';
-            });
-
-            btnSiguiente.addEventListener('click', function () {
-                mostrarPaso2();
-            });
+            btnSiguiente.addEventListener('click', mostrarPaso2);
 
             entregaPropietario.addEventListener('change', actualizarEstadoEnviarDatos);
 
@@ -99,7 +165,6 @@
             regresarPaso1.addEventListener('change', function () {
                 if (regresarPaso1.checked) {
                     mostrarPaso1();
-                    regresarPaso1.checked = false;  // Desmarcar el checkbox después de regresar
                 }
             });
 
