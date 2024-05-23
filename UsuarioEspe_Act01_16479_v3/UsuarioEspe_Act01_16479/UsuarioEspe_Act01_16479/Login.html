@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <!-- Estilos Google -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway|Ubuntu" rel="stylesheet">
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="css/style4.css">
+
+    <title>Formulario Login y Registro de Usuarios</title>
+</head>
+<body>
+    <div class="contenedor-formularios">
+        <!-- Links de los formularios -->
+        <ul class="contenedor-tabs">
+            <li class="tab tab-segunda active"><a href="#iniciar-sesion">Iniciar Sesión</a></li>
+            <li class="tab tab-primera" name="registrar"><a href="#registrarse" >Registrarse</a></li>
+        </ul>
+
+        <!-- Contenido de los Formularios -->
+        <div class="contenido-tab">
+            <!-- Iniciar Sesion -->
+            <div id="iniciar-sesion">
+                <h1>Iniciar Sesión</h1>
+                <form id="loginForm" name="FormaLogin" action="" method="post" onsubmit="return validarFormularioLogin()">
+                    <div class="contenedor-input">
+                        <label></label>
+                        <input type="text" name="usuario" id="usuario">
+                    </div>
+
+                    <div class="contenedor-input">
+                        <label></label>
+                        <input type="password" name="clave" id="clave">
+                    </div>
+                    <input type="submit" class="button button-block" value="Iniciar Sesión">
+                </form>
+            </div>
+
+            <!-- Registrarse -->
+            <div id="registrarse">
+                <h1>Registrarse</h1>
+                <form id="registerForm" action="" method="post" onsubmit="return validarFormularioRegistro()">
+                    <div class="fila-arriba">
+                        <div class="contenedor-input">
+                            <label>
+                                Nombre <span>*</span>
+                            </label>
+                            <input type="text" name="nom">
+                        </div>
+
+                        <div class="contenedor-input">
+                            <label>
+                                Apellido <span>*</span>
+                            </label>
+                            <input type="text" name="ape">
+                        </div>
+                    </div>
+                    <div class="contenedor-input">
+                        <label>
+                            Usuario <span>*</span>
+                        </label>
+                        <input type="text" name="usu">
+                    </div>
+                    <div class="contenedor-input">
+                        <label>
+                            Email <span>*</span>
+                        </label>
+                        <input type="email" name="email">
+                    </div>
+                    <div class="contenedor-input">
+                        <label>
+                            Contraseña <span>*</span>
+                        </label>
+                        <input type="password"  name="pas">
+                    </div>
+                    
+                    <div class="contenedor-input">
+                        <label>
+                            Telefono <span>*</span>
+                        </label>
+                        <input type="text" name="telefono">
+                    </div>
+
+                    <div class="contenedor-input">
+                        <label>
+                            Empresa <span>*</span>
+                        </label>
+                        <input type="text" name="empresa">
+                    </div>
+                    <div class="contenedor-input">
+                        <label>
+                            Fecha de Nacimiento <span>*</span>
+                        </label>
+                        <input type="date" name="fecha">
+                    </div>
+
+                    <input type="submit" class="button button-block" value="Registrarse">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/mainn.js"></script>
+</body>
+</html>
